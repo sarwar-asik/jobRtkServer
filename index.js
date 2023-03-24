@@ -12,21 +12,23 @@ app.use(cors());
 app.use(express.json());
 mongoose.set("strictQuery", false);
 
-const url = process.env.URL
+
+// mongoose connect 
+const url = process.env.URL;
 // console.log(uri);
-
-mongoose.connect(url,{
-    dbName: 'JobPortalRTK',
-}).then(() => {
+mongoose
+  .connect(url, {
+    dbName: "JobPortalRTK",
+  })
+  .then(() => {
     console.log("Connected to Database");
-}).catch((err) => {
-    console.log("Not Connected to Database ERROR! ", err);
-});
+  })
+  .catch((err) => {
+    const { name, message, stack } = err;
+    console.log("Not Connected to Database ERROR! ", { name, message, stack });
+  });
 
-
-
-app.use("/jobs",require('./Routes/jobRouter'))
-
+app.use("/jobs", require("./Routes/jobRouter"));
 
 app.get("/", async (req, res) => {
   res.send(`Job Server running on ${port} `);
