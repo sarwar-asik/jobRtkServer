@@ -12,8 +12,7 @@ app.use(cors());
 app.use(express.json());
 mongoose.set("strictQuery", false);
 
-
-// mongoose connect 
+// mongoose connect
 const url = process.env.URL;
 // console.log(uri);
 mongoose
@@ -29,6 +28,7 @@ mongoose
   });
 
 app.use("/jobs", require("./Routes/jobRouter"));
+app.use("/register", require("./Routes/employeeRouter"));
 
 app.get("/", async (req, res) => {
   res.send(`Job Server running on ${port} `);
