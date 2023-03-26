@@ -12,6 +12,9 @@ const employeeSchemas = mongoose.Schema({
   employeeNumber: {
     type: String,
   },
+  CompanyRole: {
+    type: String,
+  },
   role: {
     type: String,
   },
