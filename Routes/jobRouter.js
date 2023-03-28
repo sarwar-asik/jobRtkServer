@@ -15,4 +15,20 @@ router.post("/addJob", async (req, res) => {
   }
 });
 
+router.get("/", async (req, res) => {
+  try {
+    Job.find({}, (error, result) => {
+      if (error) {
+        res.status(501).send({ error: "Had an error" });
+      } else {
+        res.send(result);
+      }
+    });
+  } catch (error) {
+    const { name, message, stack } = error;
+    console.log({ name, message, stack });
+    // res.send({ name, message, stack });
+  }
+});
+
 module.exports = router;
