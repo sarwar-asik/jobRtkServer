@@ -13,4 +13,21 @@ router.post("/employee", async (req, res) => {
   }
 });
 
+router.get("/users", async (req, res) => {
+  Employee.find({}, (error, result) => {
+    if (error) {
+      res.status(501).send({ error: "Had an error" });
+    } else {
+      res.send(result);
+    }
+  });
+  // try {
+
+  // } catch (error) {
+  //   const { name, message, stack } = error;
+  //   console.log({ name, message, stack });
+  //   // res.send({ name, message, stack });
+  // }
+});
+
 module.exports = router;
