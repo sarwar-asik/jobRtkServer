@@ -9,7 +9,7 @@ router.post("/employee", async (req, res) => {
   // console.log(newEmployee);
   const result = await Employee.create(newEmployee);
   if (result) {
-    res.send({ success: true });
+    res.status(200).send({ success: true });
   }
 });
 
@@ -24,9 +24,20 @@ router.get("/users/:email", async (req, res) => {
     //     res.send(result);
     //   }
     // });
-    Employee.findOne({ email: query }).then((getUser) => {
-      res.send(getUser);
-    });
+
+    const getUser = await Employee.findOne({ email: query }).then(
+      (getUser) => getUser
+    );
+    //  res.send(getUser)
+    //  console.log(getUser);
+
+    if (getUser?.email) {
+      res.status(200).send({ status: true, data: getUser });
+      // console.log(getUser);
+    } else {
+      console.log("not found");
+      res.status(404).send({ status: false, error: "Not found data" });
+    }
 
     // Employee.find({})
     //   .then((foundItems) => {

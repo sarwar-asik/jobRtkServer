@@ -17,16 +17,18 @@ router.post("/addJob", async (req, res) => {
 
 router.get("/", async (req, res) => {
   try {
-    Job.find({}, (error, result) => {
-      if (error) {
-        res.status(501).send({ error: "Had an error" });
-      } else {
-        res.send(result);
-      }
-    });
+    Job.find({})
+      .then((getJob) => {
+        res.status(200).send(getJob);
+      })
+      .catch((e) =>
+        res.status(404).send({ error: e.message + " from Server" })
+      );
   } catch (error) {
     const { name, message, stack } = error;
-    console.log({ name, message, stack });
+    console.log({ name, message, stack })
+               
+    res.status(500).send({ error: message + " From Server", status: 500 });
     // res.send({ name, message, stack });
   }
 });
