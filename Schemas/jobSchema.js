@@ -1,12 +1,27 @@
-const mongoose = require('mongoose')
+const mongoose = require("mongoose");
 
 const jobSchema = mongoose.Schema({
-    name:{
-        type:String
-    },
-    salary:{
-        type:String
-    },
-})
+  position: {
+    type: String,
+  },
+  experience: {
+    type: String,
+  },
+  location: {
+    type: String,
+  },
+  company: {
+    type: String,
+  },
+  skills: {
+    type: String,
+  },
+  workplace: {
+    type: String,
+  },
+  overview: {
+    type: String,
+  },
+});
 
-module.exports = jobSchema
+module.exports = jobSchema;

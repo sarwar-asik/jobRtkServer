@@ -16,6 +16,7 @@ router.post("/employee", async (req, res) => {
 router.get("/users/:email", async (req, res) => {
   try {
     const query = req.params.email;
+
     // console.log(query);
     // Employee.find({}, (error, result) => {
     //   if (error) {
@@ -35,7 +36,7 @@ router.get("/users/:email", async (req, res) => {
       res.status(200).send({ status: true, data: getUser });
       // console.log(getUser);
     } else {
-      console.log("not found");
+      console.log("not found in DB", query);
       res.status(404).send({ status: false, error: "Not found data" });
     }
 
