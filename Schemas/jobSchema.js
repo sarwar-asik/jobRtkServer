@@ -14,12 +14,12 @@ const jobSchema = mongoose.Schema({
     type: String,
   },
   skills: {
+    type: Array,
+  },
+  workPlace: {
     type: String,
   },
-  workplace: {
-    type: String,
-  },
-  overview: {
+  overView: {
     type: String,
   },
 });
