@@ -15,12 +15,12 @@ const jobSchema = mongoose.Schema(
       required: [true, "Can not publish without experience"],
       min: [0, "Can not with Negative"],
       max: [10, "it is not available "],
-      // enum:["kg","litre","pcs"] or ===>
+      // enum:["kg","litre","pcs"],
+      // //  or ===>
       // enum:{
-      //   value:["kg","litre","pcs"],
+      //   values:["kg","litre","pcs"],
       //   message:"unit value cannot without kg/litre/pcs"
-      // }
-
+      // },
       validate: {
         validator: (value) => {
           const isInteger = Number.isInteger(value);
