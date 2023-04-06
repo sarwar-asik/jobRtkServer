@@ -29,7 +29,7 @@ router.get("/all", async (req, res) => {
     console.log("query.................... Job ");
     Job.find({})
       .then((getJob) => {
-        res.status(200).send(getJob);
+        res.status(200).send({ success: true, data: getJob });
       })
       .catch((e) =>
         res.status(404).send({ error: e.message + " from Server" })
@@ -42,14 +42,13 @@ router.get("/all", async (req, res) => {
     // res.send({ name, message, stack });
   }
 });
-
 router.get("/:_id", async (req, res) => {
   try {
     const id = req.params._id;
     const query = { ObjectId: new ObjectId(id) };
     console.log("query by id ..............", query);
     const getJob = await Job.findById(id).then((jobs) => jobs);
-    if (getJob) {
+    if (getJob?._id) {
       res.status(200).send({ status: true, data: getJob });
     } else {
       console.log("not found in DB", query);
