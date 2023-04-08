@@ -30,6 +30,13 @@ mongoose
 app.use("/jobs", require("./Routes/jobRouter"));
 app.use("/register", require("./Routes/employeeRouter"));
 
+
+
+// Creating controler ////
+
+
+
+
 app.get("/", async (req, res) => {
   res.send(`Job Server running on ${port} `);
 });
