@@ -32,9 +32,10 @@ app.use("/register", require("./Routes/employeeRouter"));
 
 
 
-// Creating controler ////
+// Creating controller ////
+const job2Route = require('./system2/route2/job2.route')
 
-
+app.use("/api/v1/jobs",job2Route)
 
 
 app.get("/", async (req, res) => {

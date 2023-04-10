@@ -14,8 +14,10 @@ exports.getJobs2 = async (req, res, next) => {
 
 exports.createJob = async (req, res, next) => {
   try {
-    const result = await job2.create(req.body)
-    result.logger()
+    const result = await job2.create(req.body);
+    result.logger();
+
+    res.status(200).json({ status: "success", data: result });
   } catch (error) {
     const { name, message, stack } = error;
 
