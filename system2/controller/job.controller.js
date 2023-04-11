@@ -1,3 +1,4 @@
+const { catchError } = require("../../error/catchError");
 const job2 = require("../model/jobs");
 
 exports.getJobs2 = async (req, res, next) => {
@@ -7,7 +8,6 @@ exports.getJobs2 = async (req, res, next) => {
     res.status(200).json({ status: "success", data: jobs });
   } catch (error) {
     const { name, message, stack } = error;
-
     res.status(400).send({ status: "error", name, message, stack });
   }
 };
@@ -22,5 +22,16 @@ exports.createJob = async (req, res, next) => {
     const { name, message, stack } = error;
 
     res.status(400).send({ status: "error", name, message, stack });
+  }
+};
+
+exports.updateJob2 = async (req, res) => {
+  try {
+    const data = req.body;
+      
+    console.log(data);
+    // throw {name:"myError",message:"dinku",stack:"stckssss"}
+  } catch (error) {
+    catchError(error, res);
   }
 };
