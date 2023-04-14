@@ -1,6 +1,6 @@
 const { catchError } = require("../../error/catchError");
 const job2 = require("../model/jobs");
-const { bulkDeleteJob } = require("../services/job2.services");
+const { bulkDeleteJobByID } = require("../services/job2.services");
 
 exports.getJobs2 = async (req, res, next) => {
   try {
@@ -38,9 +38,10 @@ exports.updateJob2 = async (req, res) => {
   }
 };
 
-exports.deleteJob2 = async (req, res) => {
+exports.deleteByIdJob2 = async (req, res) => {
   try {
-    const result = await bulkDeleteJob(req.body.ids);
+    // console.log(req.params.id, "from controller");
+    const result = await bulkDeleteJobByID(req.params.id);
     // res.send("wait bro/////////")
     res.status(200).json({ status: "success delete", data: result });
 
