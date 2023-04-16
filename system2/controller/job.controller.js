@@ -5,7 +5,7 @@ const { bulkDeleteJobByID } = require("../services/job2.services");
 exports.getJobs2 = async (req, res, next) => {
   try {
     console.log("query.......");
-    const jobs = await job2.find({}).select("-jobs")
+    const jobs = await job2.find({}).select("-jobs -overView -v");
     // console.log(jobs);
 
     res.status(200).json({ status: "success", data: jobs });
