@@ -14,7 +14,7 @@ mongoose.set("strictQuery", false);
 
 // mongoose connect
 const url = process.env.URL;
-// console.log(uri);
+// console.log(url);
 mongoose
   .connect(url, {
     dbName: "JobPortalRTK",
@@ -30,13 +30,10 @@ mongoose
 app.use("/jobs", require("./Routes/jobRouter"));
 app.use("/register", require("./Routes/employeeRouter"));
 
-
-
 // Creating controller ////
-const job2Route = require('./system2/route2/job2.route')
+const job2Route = require("./system2/route2/job2.route");
 
-app.use("/api/v1/jobs",job2Route)
-
+app.use("/api/v1/jobs", job2Route);
 
 app.get("/", async (req, res) => {
   res.send(`Job Server running on ${port} `);
