@@ -5,13 +5,15 @@ const { bulkDeleteJobByID } = require("../services/job2.services");
 exports.getJobs2 = async (req, res, next) => {
   try {
     console.log("query.......");
-    const jobs = await job2.find({}).select("-jobs -overView ");
+    const jobs = await job2.find({})
+    // .select("jobs");
+    
     // console.log(jobs);
 
     res.status(200).json({ status: "success", data: jobs });
   } catch (error) {
     const { name, message, stack } = error;
-    res.status(400).send({ status: "error", name, message, stack });
+    res.status(400).send({ status: "error from getJob", name, message, stack });
   }
 };
 

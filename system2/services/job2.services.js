@@ -7,3 +7,7 @@ exports.bulkDeleteJobByID = async (id) => {
   // // const result = await job2.deleteMany({ id: ids });
   return result;
 };
+
+exports.getJob = async (filter, queries) => {
+  
+};
