@@ -4,10 +4,23 @@ const { bulkDeleteJobByID } = require("../services/job2.services");
 
 exports.getJobs2 = async (req, res, next) => {
   try {
-    console.log("query.......");
-    const jobs = await job2.find({})
+    // console.log("query.......");
+    // const {filters} = req.query
+    let filters = { ...req.query };
+    // ?salary[gt]=300  ==>>  {salary:{gt:'300'}}
+
+    let filterString = JSON.stringify(filters);
+    filterString = filterString.replace(
+      /\b(gt|lt|lte|gte)\b/g,
+      (match) => `$${match}`
+    );
+
+    filters = JSON.parse(filterString);
+    console.log(filterString, "filterString");
+
+    const jobs = await job2.find(filters);
     // .select("jobs");
-    
+
     // console.log(jobs);
 
     res.status(200).json({ status: "success", data: jobs });
