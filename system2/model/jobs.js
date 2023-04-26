@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-
+// const validator = require('validator');
 const jobSchema2 = mongoose.Schema(
   {
     position: {

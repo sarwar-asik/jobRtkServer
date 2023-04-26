@@ -8,8 +8,7 @@ const Job = new mongoose.model("JOB", jobSchema);
 router.post("/addJob", async (req, res) => {
   try {
     const newJob = new Job(req.body);
-    console.log(newJob, "from body");
-
+    console.log(newJob, "from body")
     Job.create(newJob)
       .then((result) => {
         res.status(200).send({ success: true });
